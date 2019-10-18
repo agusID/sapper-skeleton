@@ -1,7 +1,12 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "sapper-skeleton",
+  "description": "Sapper Skeleton based on Svelte",
   "version": "0.0.1",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:eslint && yarn lint:prettier"
+    }
+  },
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build",
@@ -11,7 +16,13 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "format": "npm-run-all -c format:*",
+    "format:eslint": "eslint --fix '**/*.{js,ts,svelte}'",
+    "format:prettier": "prettier --write '**/*.{js,ts,svelte,json,md,css}'",
+    "lint": "npm-run-all -c lint:*",
+    "lint:eslint": "eslint '**/*.{js,ts}'",
+    "lint:prettier": "prettier --check '**/*.{js,ts,json,md,css}'"
   },
   "dependencies": {
     "compression": "^1.7.1",
@@ -24,11 +35,49 @@
     "@storybook/addon-links": "^5.2.4",
     "@storybook/addons": "^5.2.4",
     "@storybook/svelte": "^5.2.4",
+    "@testing-library/jest-dom": "^4.1.2",
+    "@testing-library/svelte": "^1.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "babel-loader": "^8.0.6",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "file-loader": "^4.2.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "jest-dom": "^4.0.0",
+    "jest-transform-svelte": "^2.1.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "prettier-plugin-svelte": "^0.7.0",
     "sapper": "^0.27.0",
     "svelte": "^3.12.1",
     "svelte-loader": "^2.13.6",
+    "typescript": "^3.5.3",
     "webpack": "^4.7.0"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agusID/sapper-skeleton.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "svelte",
+    "sapper",
+    "javascript"
+  ],
+  "author": "Dwi Agustianto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agusID/sapper-skeleton/issues"
+  },
+  "homepage": "https://github.com/agusID/sapper-skeleton#readme"
 }

@@ -1,0 +1,9 @@
+/__sapper__/
+node_modules
+build
+*.log
+.env
+.idea
+svelte.config.js
+jest.config.js
+webpack.config.js
