@@ -1,4 +1,5 @@
 /__sapper__/
+cypress
 node_modules
 build
 *.log
