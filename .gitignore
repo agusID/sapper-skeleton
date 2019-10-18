@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+#history
+.history
+
+#others
+.DS_Store
+package-lock.json
+yarn-error.log
+yarn.lock
+coverage
+/src/node_modules/@sapper/
+/cypress/screenshots/
+/__sapper__/
