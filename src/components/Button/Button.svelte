@@ -1,6 +1,6 @@
 <script>
   import clsx from 'clsx'
-  import { clean } from '../utils'
+  import { clean, mixcls } from '../utils'
 
   let className = ''
   export { className as class }
@@ -20,14 +20,14 @@
   const props = clean($$props)
 
   $: ariaLabel = $$props['aria-label']
-  $: classes = clsx(
+  $: classes = mixcls(
     className,
     { close },
     close || 'btn',
-    close || `btn${outline} ? '-outline': ''}-${color}`,
+    close || `btn${outline ? '-outline' : ''}-${color}`,
     size ? `btn-${size}` : false,
     block ? 'btn-block' : false,
-    { active },
+    { active }
   )
 
   $: defaultAriaLabel = close ? 'Close' : null

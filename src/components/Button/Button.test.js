@@ -1,25 +1,23 @@
-import { render, fireEvent } from '@testing-library/svelte'
-
+import { render, cleanup } from '@testing-library/svelte'
 import Button from './Button.svelte'
 
-test('shows proper heading when rendered', () => {
-  const { getByText } = render(Button, {
-    props: { text: 'Button Text' },
-  })
+const renderButton = props => {
+  const { container } = render(Button, { props })
+  return container
+}
 
-  expect(getByText('Button Text')).toBeInTheDocument()
+beforeEach(cleanup)
+
+afterEach(() => {
+  cleanup()
 })
 
-// Note: This is as an async test as we are using `fireEvent`
-test('changes button text on click', async () => {
-  const { getByText } = render(Button, {
-    props: { text: 'Button Text' },
+describe('Button', () => {
+  test('should render text and default color', () => {
+    const container = renderButton({ children: 'Hello world!' })
+    const button = container.querySelector('.btn')
+    console.log(button)
+    // expect(button.innerHTML).toBe('Hello world!')
+    // expect(button.className).toBe('btn btn-secondary')
   })
-  const button = getByText('Button Text')
-
-  // Using await when firing events is unique to the svelte testing library because
-  // we have to wait for the next `tick` so that Svelte flushes all pending state changes.
-  await fireEvent.click(button)
-
-  expect(button).toHaveTextContent('Button Text')
 })

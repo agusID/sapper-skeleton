@@ -2,11 +2,23 @@
   "name": "sapper-skeleton",
   "description": "Sapper Skeleton based on Svelte",
   "version": "0.0.1",
+  "jest": {
+    "transform": {
+      "^.+\\.svelte$": "jest-transform-svelte"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint:eslint && yarn lint:prettier"
     }
   },
+  "setupFilesAfterEnv": [
+    "@testing-library/jest-dom/extend-expect"
+  ],
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build",
@@ -14,7 +26,9 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run",
+    "test": "jest src --passWithNoTests --coverage",
+    "test:watch": "npm run test -- --watch",
+    "test:cypress": "run-p --race dev cy:run",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "npm-run-all -c format:*",
@@ -32,6 +46,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-knobs": "^5.2.1",
     "@storybook/addon-links": "^5.2.4",
@@ -41,7 +57,10 @@
     "@testing-library/svelte": "^1.9.0",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.0.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
