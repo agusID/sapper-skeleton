@@ -1,21 +1,9 @@
-import { action } from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/svelte'
 
-import Button from './button.svelte'
+import Colors from './Button/Colors.svelte'
 
-export default {
-  title: 'Button',
-}
-
-export const text = () => ({
-  Component: Button,
-  props: { text: 'Hello Button' },
-  on: { click: action('clicked') },
+const story = Component => () => ({
+  Component,
 })
 
-export const emoji = () => ({
-  Component: Button,
-  props: {
-    text: '😀 😎 👍 💯',
-  },
-  on: { click: action('clicked') },
-})
+storiesOf('Components', module).add('Button', story(Colors))
