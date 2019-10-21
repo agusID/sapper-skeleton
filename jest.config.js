@@ -17,5 +17,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'svelte'],
   bail: false,
-  verbose: false
+  verbose: false,
 }
