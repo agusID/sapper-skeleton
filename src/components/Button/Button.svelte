@@ -1,6 +1,6 @@
 <script>
   import { clean, mixcls } from '../utils'
-  
+
   let className = ''
   export { className as class }
   export let active = false
@@ -26,10 +26,9 @@
     close || `btn${outline ? '-outline' : ''}-${color}`,
     size ? `btn-${size}` : false,
     block ? 'btn-block' : false,
-    { active }
+    { active },
   ])
   $: defaultAriaLabel = close ? 'Close' : null
-
 </script>
 
 <style src="./style.sass">
