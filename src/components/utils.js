@@ -6,14 +6,14 @@ export function mixcls(mix) {
     if (typeof mix === 'object') {
       if (!!mix.push) {
         for (k = 0; k < mix.length; k++) {
-          if (mix[k] && (y = toVal(mix[k]))) {
+          if (mix[k] && (y = mixcls(mix[k]))) {
             str && (str += ' ')
             str += y
           }
         }
       } else {
         for (k in mix) {
-          if (mix[k] && (y = toVal(k))) {
+          if (mix[k] && (y = mixcls(k))) {
             str && (str += ' ')
             str += y
           }

@@ -8,7 +8,7 @@
   }
 </script>
 
-<style src="./style.scss">
+<style src="./style.sass">
 
 </style>
 
