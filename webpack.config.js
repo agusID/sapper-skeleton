@@ -7,12 +7,13 @@ const pkg = require('./package.json')
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
 
-const { scss } = require('svelte-preprocess')
+const { sass } = require('svelte-preprocess')
 
 const alias = {
   svelte: path.resolve('node_modules', 'svelte'),
   '@components': path.resolve(__dirname, './src/components/index.js'),
   '@assets': path.resolve(__dirname, './src/assets'),
+  '@images': path.resolve(__dirname, './src/assets/images'),
   '@config': path.resolve(__dirname, './src/config'),
   '@views': path.resolve(__dirname, './src/views'),
 }
@@ -34,7 +35,7 @@ module.exports = {
               dev,
               hydratable: true,
               hotReload: false, // pending https://github.com/sveltejs/svelte/issues/2377
-              preprocess: require('svelte-preprocess')([scss()]),
+              preprocess: require('svelte-preprocess')([sass()]),
             },
           },
         },
@@ -90,8 +91,17 @@ module.exports = {
               css: false,
               generate: 'ssr',
               dev,
+              preprocess: require('svelte-preprocess')([sass()]),
             },
           },
+        },
+        {
+          test: /\.(png|jpe?g|svg)$/,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
         },
       ],
     },

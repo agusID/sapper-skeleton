@@ -9,12 +9,14 @@
   export let close = false
   export let color = 'secondary'
   export let disabled = false
+  export let rounded = false
   export let href = ''
   export let id = ''
   export let outline = false
   export let size = ''
   export let style = ''
   export let value = ''
+  export let flex = false
 
   const props = clean($$props)
 
@@ -26,6 +28,8 @@
     close || `btn${outline ? '-outline' : ''}-${color}`,
     size ? `btn-${size}` : false,
     block ? 'btn-block' : false,
+    rounded ? 'btn-rounded' : false,
+    flex ? 'btn-flex' : false,
     { active },
   ])
   $: defaultAriaLabel = close ? 'Close' : null
